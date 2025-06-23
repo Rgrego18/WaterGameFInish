@@ -1,0 +1,219 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #e0f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+#game-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 24px;
+}
+
+#actions button {
+  margin: 8px 4px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  background: #00bcd4;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#actions button:hover {
+  background: #0097a7;
+}
+
+#donate-btn {
+  background: #ff9800;
+}
+
+#donate-btn:hover {
+  background: #f57c00;
+}
+
+#progress-section {
+  margin: 16px 0;
+}
+
+#well-progress {
+  width: 100%;
+  height: 20px;
+}
+
+#fact-box {
+  margin-top: 24px;
+  background: #f1f8e9;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #33691e;
+  min-height: 40px;
+}
+
+#well-visual {
+  margin: 16px 0;
+  text-align: center;
+  font-size: 2rem;
+  min-height: 40px;
+}
+
+.villager-icon {
+  display: inline-block;
+  margin: 0 2px;
+  transition: transform 0.3s;
+}
+
+.well-icon {
+  display: inline-block;
+  margin: 0 4px;
+  transition: transform 0.3s;
+}
+
+.well-icon.placed {
+  animation: pop 0.4s;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+}
+#qte-canvas {
+  margin-bottom: 16px;
+  background: #e0f7fa;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+#qte-stop-btn {
+  background: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+#qte-result {
+  font-weight: bold;
+  margin-top: 8px;
+}
+#quiz-options button {
+  margin: 6px 4px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  background: #00bcd4;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#quiz-options button:hover {
+  background: #0097a7;
+}
+
+/* Add to your CSS file */
+#well-visual, #villager-visual, #building-visual {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.well-icon, .building-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-shadow: 0 2px 6px #b2ebf2;
+}
+
+.well-label, .building-label {
+  font-size: 0.8rem;
+  color: #0288d1;
+}
+
+.villager-icon {
+  font-size: 2rem;
+  margin: 0 2px;
+}
+
+.action-btn {
+  margin: 6px 8px 6px 0;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #b3e5fc;
+  color: #01579b;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn:hover {
+  background: #4fc3f7;
+}
+
+.hire-btn {
+  background: #ffe082;
+  color: #ff6f00;
+}
+
+.hire-btn:hover {
+  background: #ffd54f;
+}
+
+.donate-btn {
+  background: #ffccbc;
+  color: #d84315;
+}
+
+.donate-btn:hover {
+  background: #ffab91;
+}
+
+#message {
+  margin: 12px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1976d2;
+  text-align: center;
+}
+
+#water-fact {
+  margin: 10px 0;
+  font-style: italic;
+  color: #388e3c;
+  text-align: center;
+}

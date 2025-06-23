@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Well Builder Tycoon</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="stats-bar">
+      <span>💰 Money: $<span id="money">1000</span></span>
+      <span>👷 Workers: <span id="workers">5</span></span>
+      <span>🏠 Buildings: <span id="buildings">0</span></span>
+      <span>❤️ Lives: <span id="lives">3</span></span>
+    </div>
+    <div id="building-visual"></div>
+    <div id="villager-visual"></div>
+    <progress id="villager-progress" max="100" value="0"></progress>
+    <div id="people-benefit"></div>
+    <div id="actions"></div>
+    <div id="message"></div>
+    <div id="water-fact"></div>
+  </div>
+
+  <!-- QTE Modal -->
+  <div id="qte-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;align-items:center;justify-content:center;z-index:2000;background:rgba(0,0,0,0.6);">
+    <div style="background:#fff;padding:24px 32px;border-radius:12px;position:relative;">
+      <canvas id="qte-canvas" width="300" height="300"></canvas>
+      <div id="qte-result" style="margin:12px 0;font-weight:bold;"></div>
+      <button id="qte-stop-btn">Stop</button>
+    </div>
+  </div>
+
+  <!-- Quiz Modal -->
+  <div id="quiz-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <p id="quiz-question"></p>
+      <div id="quiz-options"></div>
+      <p id="quiz-feedback"></p>
+      <p id="player-lives" style="font-weight:bold; color:#d32f2f;"></p>
+    </div>
+  </div>
+
+  <!-- Boss Transition Modal -->
+  <div id="boss-transition" class="modal" style="display:none;">
+    <div class="modal-content" style="text-align:center;">
+      <h2>Miniboss Appears!</h2>
+      <div style="font-size:4rem;">🦹‍♂️</div>
+      <p>Prepare for a quiz battle!</p>
+    </div>
+  </div>
+
+  <!-- Boss Modal -->
+  <div id="boss-modal" class="modal" style="display:none;">
+    <div class="modal-content" style="text-align:center;">
+      <div style="font-size:3rem;">🦹‍♂️</div>
+      <h2 id="boss-title">Miniboss Challenge!</h2>
+      <p id="boss-desc">Answer questions to defeat the boss!</p>
+      <p>Boss Lives: <span id="boss-lives">3</span></p>
+      <div id="boss-quiz-question"></div>
+      <div id="boss-quiz-options"></div>
+      <p id="boss-quiz-feedback"></p>
+      <div id="powerup-message" style="display:none; font-weight:bold; color:#388e3c; margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:3000;display:none;"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
