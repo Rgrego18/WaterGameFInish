@@ -788,6 +788,8 @@ function updateUI() {
   document.getElementById('hire-worker-btn').onclick = hireWorkers;
   document.getElementById('build-btn').onclick = showBuildingModal;
   document.getElementById('donate-btn').onclick = function() {
+    window.donatedClicked = true;
+    checkAchievements();
     window.open('https://charitywater.org/donate', '_blank');
   };
 
@@ -919,7 +921,8 @@ function nextLevel() {
   villagersGoal += 50;
   villagersHelped = 0;
   lives += 1;
-  document.getElementById('message').textContent = `Level up! Welcome to Level ${level}. New goal: Help ${villagersGoal} villagers.`;
+  money += 200; // Give player $200 for leveling up
+  document.getElementById('message').textContent = `Level up! Welcome to Level ${level}. New goal: Help ${villagersGoal} villagers. You earned $200!`;
 
   // Trigger miniboss at level 3
   if (level === 3 && !minibossActive) {
@@ -1129,7 +1132,9 @@ function randomGameEvent() {
     },
     () => {
       villagersHelped += 10;
+      window.rainEventTriggered = true;
       document.getElementById('message').textContent = "A rainstorm helped 10 villagers!";
+      checkAchievements();
     },
     () => {
       money -= 50;
@@ -1162,7 +1167,6 @@ function renderVillagerStory() {
       document.getElementById('game-container').appendChild(storyDiv);
     }
   }
-  const villager = villagers[Math.floor(Math.random() * villagers.length)];
   storyDiv.innerHTML = `<b>${villager.name}'s Story:</b><br><span style="font-size:1.05rem;">${villager.story}</span>`;
 }
 setInterval(renderVillagerStory, 20000);
@@ -1199,4 +1203,52 @@ function checkMilestones() {
       shownMilestones.add(m.value);
     }
   });
+}
+
+// --- ACHIEVEMENTS ---
+const achievements = [
+  { key: "level5", label: "Complete Level 5", unlocked: false },
+  { key: "trainAll", label: "Train all workers", unlocked: false },
+  { key: "buildAll", label: "Build every type of water solution", unlocked: false },
+  { key: "help100", label: "Help 100 villagers", unlocked: false },
+  { key: "bossWin", label: "Defeat the boss", unlocked: false },
+  { key: "rainEvent", label: "Trigger a rainstorm event", unlocked: false },
+  { key: "donate", label: "Click the Donate button", unlocked: false }
+];
+
+function checkAchievements() {
+  // Level 5
+  if (level >= 5) unlockAchievement("level5");
+  // Train all workers
+  if (workers.length > 0 && workers.every(w => w.trained)) unlockAchievement("trainAll");
+  // Build all types
+  if (Object.values(buildingsByType).every(v => v > 0)) unlockAchievement("buildAll");
+  // Help 100 villagers
+  if (villagersHelped >= 100) unlockAchievement("help100");
+  // Boss win
+  if (!bossActive && level >= 5) unlockAchievement("bossWin");
+  // Rain event
+  if (window.rainEventTriggered) unlockAchievement("rainEvent");
+  // Donate
+  if (window.donatedClicked) unlockAchievement("donate");
+  renderAchievements();
+}
+
+function unlockAchievement(key) {
+  const ach = achievements.find(a => a.key === key);
+  if (ach && !ach.unlocked) {
+    ach.unlocked = true;
+    document.getElementById('message').textContent = `Achievement unlocked: ${ach.label}!`;
+    playSound('audio-win');
+  }
+}
+
+function renderAchievements() {
+  const list = document.getElementById('achievements-list');
+  if (!list) return;
+  list.innerHTML = achievements.map(a =>
+    `<li style="color:${a.unlocked ? '#388e3c' : '#888'};">
+      ${a.unlocked ? "🏆" : "⬜"} ${a.label}
+    </li>`
+  ).join('');
 }
