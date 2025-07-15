@@ -16,6 +16,7 @@
     </div>
     <div id="building-visual"></div>
     <div id="villager-visual"></div>
+    <div id="worker-visual"></div>
     <progress id="villager-progress" max="100" value="0"></progress>
     <div id="people-benefit"></div>
     <div id="actions"></div>
@@ -65,8 +66,30 @@
     </div>
   </div>
 
+  <!-- Title Modal -->
+  <div id="title-modal" class="modal" style="display:flex;">
+    <div class="modal-content">
+      <h2>Well Builder Tycoon</h2>
+      <p>Choose your difficulty:</p>
+      <button id="normal-mode-btn">Normal Mode</button>
+      <button id="hard-mode-btn">Hard Mode</button>
+    </div>
+  </div>
+
   <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:3000;display:none;"></canvas>
 
+  <!-- Charity: Water Footer -->
+<footer>
+  <img src="https://d11sa1anfvm2xk.cloudfront.net/media/downloads/logos/cw_vertical_white.jpg" alt="charity: water logo" style="height:32px;vertical-align:middle;margin-right:10px;">
+  charity: water
+  <a href="https://www.charitywater.org/" target="_blank">Learn More</a>
+  <a href="https://www.charitywater.org/donate" target="_blank">Donate</a>
+</footer>
+
+  <audio id="audio-collect" src="sounds/collect.mp3"></audio>
+<audio id="audio-miss" src="sounds/miss.mp3"></audio>
+<audio id="audio-click" src="sounds/click.mp3"></audio>
+<audio id="audio-win" src="sounds/win.mp3"></audio>
   <script src="script.js"></script>
 </body>
 </html>

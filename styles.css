@@ -1,219 +1,310 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
+body, h1, h2, h3, h4, h5, h6, p, span, button, input, label, div, footer {
+  font-family: 'Montserrat', Arial, sans-serif !important;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #e0f7fa;
   margin: 0;
-  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd 0%, #b2ebf2 100%);
+  color: #222;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 #game-container {
-  max-width: 400px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 32px auto;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #b2dfdb;
+  padding: 32px 24px 24px 24px;
 }
 
-#actions button {
-  margin: 8px 4px;
-  padding: 8px 16px;
-  font-size: 1rem;
-  border-radius: 4px;
-  border: none;
-  background: #00bcd4;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-#actions button:hover {
-  background: #0097a7;
-}
-
-#donate-btn {
-  background: #ff9800;
-}
-
-#donate-btn:hover {
-  background: #f57c00;
-}
-
-#progress-section {
-  margin: 16px 0;
-}
-
-#well-progress {
-  width: 100%;
-  height: 20px;
-}
-
-#fact-box {
-  margin-top: 24px;
-  background: #f1f8e9;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  color: #33691e;
-  min-height: 40px;
-}
-
-#well-visual {
-  margin: 16px 0;
-  text-align: center;
-  font-size: 2rem;
-  min-height: 40px;
-}
-
-.villager-icon {
-  display: inline-block;
-  margin: 0 2px;
-  transition: transform 0.3s;
-}
-
-.well-icon {
-  display: inline-block;
-  margin: 0 4px;
-  transition: transform 0.3s;
-}
-
-.well-icon.placed {
-  animation: pop 0.4s;
-}
-
-@keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.4); }
-  100% { transform: scale(1); }
-}
-
-.modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
+#stats-bar {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-.modal-content {
-  background: #fff;
-  padding: 24px;
-  border-radius: 8px;
-  text-align: center;
-}
-#qte-canvas {
-  margin-bottom: 16px;
-  background: #e0f7fa;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-#qte-stop-btn {
-  background: #00bcd4;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 24px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  margin-bottom: 12px;
-}
-#qte-result {
-  font-weight: bold;
-  margin-top: 8px;
-}
-#quiz-options button {
-  margin: 6px 4px;
-  padding: 8px 16px;
-  font-size: 1rem;
-  border-radius: 4px;
-  border: none;
-  background: #00bcd4;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-#quiz-options button:hover {
-  background: #0097a7;
+  gap: 32px;
+  background: rgba(0,150,136,0.08);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 14px 24px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  justify-content: space-between;
 }
 
-/* Add to your CSS file */
-#well-visual, #villager-visual, #building-visual {
+#stats-bar span {
   display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-  justify-content: center;
-}
-
-.well-icon, .building-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 2rem;
-  background: #e0f7fa;
-  border-radius: 8px;
-  padding: 6px 10px;
-  box-shadow: 0 2px 6px #b2ebf2;
-}
-
-.well-label, .building-label {
-  font-size: 0.8rem;
-  color: #0288d1;
-}
-
-.villager-icon {
-  font-size: 2rem;
-  margin: 0 2px;
-}
-
-.action-btn {
-  margin: 6px 8px 6px 0;
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: none;
-  background: #b3e5fc;
-  color: #01579b;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
-  display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.action-btn:hover {
-  background: #4fc3f7;
+#building-visual, #villager-visual {
+  min-height: 60px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2.2rem;
+  animation: fadeIn 0.8s;
 }
 
-.hire-btn {
-  background: #ffe082;
-  color: #ff6f00;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
 }
 
-.hire-btn:hover {
-  background: #ffd54f;
+#villager-progress {
+  width: 100%;
+  height: 22px;
+  margin-bottom: 16px;
+  accent-color: #1976d2;
+  border-radius: 8px;
+  background: #e3f2fd;
+  box-shadow: 0 1px 4px rgba(33,150,243,0.08);
 }
 
-.donate-btn {
-  background: #ffccbc;
-  color: #d84315;
+#people-benefit {
+  font-size: 1.1rem;
+  color: #388e3c;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
-.donate-btn:hover {
-  background: #ffab91;
+#actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+#actions button, .modal-content button, #qte-stop-btn {
+  background: linear-gradient(90deg, #1976d2 60%, #64b5f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+
+#actions button:hover, .modal-content button:hover, #qte-stop-btn:hover {
+  background: linear-gradient(90deg, #1565c0 60%, #1976d2 100%);
+  transform: scale(1.06);
+}
+
+.main-action-btn {
+  background: linear-gradient(90deg, #ffd600 60%, #fffbe7 100%);
+  color: #222;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,214,0,0.12);
+  transition: background 0.2s, transform 0.2s;
+  margin: 0;
+}
+
+.main-action-btn:hover {
+  background: linear-gradient(90deg, #ffe066 60%, #ffd600 100%);
+  transform: scale(1.07);
 }
 
 #message {
-  margin: 12px 0;
   font-size: 1.1rem;
-  font-weight: bold;
+  margin-bottom: 10px;
   color: #1976d2;
-  text-align: center;
 }
 
 #water-fact {
-  margin: 10px 0;
-  font-style: italic;
   color: #388e3c;
-  text-align: center;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  font-style: italic;
+  min-height: 22px;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+  padding: 32px 36px;
+  min-width: 320px;
+  max-width: 90vw;
+  animation: fadeIn 0.5s;
+}
+
+#quiz-options button, #boss-quiz-options button {
+  margin: 8px 0;
+  width: 100%;
+  background: linear-gradient(90deg, #8e24aa 60%, #ce93d8 100%);
+}
+
+#quiz-options button:hover, #boss-quiz-options button:hover {
+  background: linear-gradient(90deg, #6a1b9a 60%, #8e24aa 100%);
+}
+
+#player-lives {
+  margin-top: 10px;
+}
+
+#boss-transition .modal-content {
+  background: #f3e5f5;
+  border: 2px solid #8e24aa;
+}
+
+#boss-modal .modal-content {
+  background: #fffde7;
+  border: 2px solid #fbc02d;
+}
+
+#boss-title {
+  color: #fbc02d;
+}
+
+#boss-desc {
+  color: #6d4c41;
+}
+
+#boss-lives {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+#powerup-message {
+  color: #388e3c;
+}
+
+#confetti-canvas {
+  pointer-events: none;
+  z-index: 3000;
+}
+
+/* Villager Animation Styles */
+.villager-icon {
+  display: inline-block;
+  font-size: 2.5rem;
+  margin: 0 6px;
+  transition: transform 0.2s, filter 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+
+.villager-icon:hover {
+  transform: scale(1.2) rotate(-10deg);
+  filter: brightness(1.3) drop-shadow(0 0 8px #1976d2);
+  z-index: 2;
+}
+
+.villager-icon.glow {
+  animation: villagerGlow 0.7s;
+  filter: brightness(1.8) drop-shadow(0 0 14px #ffd600);
+}
+
+.villager-icon.jump-once {
+  animation: villagerJump 0.5s;
+}
+
+@keyframes villagerJump {
+  0% { transform: scale(1) rotate(0);}
+  50% { transform: scale(1.3) rotate(-20deg);}
+  100% { transform: scale(1) rotate(0);}
+}
+
+@keyframes villagerGlow {
+  0% { filter: brightness(1.8) drop-shadow(0 0 14px #ffd600);}
+  100% { filter: brightness(1) drop-shadow(0 0 0px #ffd600);}
+}
+
+#villager-visual {
+  min-height: 120px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  font-size: 2.2rem;
+  position: relative;
+  background: url('data:image/svg+xml;utf8,<svg width="400" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="100" fill=\'%23e3f2fd\'/><ellipse cx="200" cy="100" rx="180" ry="30" fill=\'%239ccc65\'/><rect x="60" y="60" width="40" height="30" fill=\'%23fffde7\' stroke=\'%23a1887f\' stroke-width="2"/><polygon points="60,60 80,40 100,60" fill=\'%23ffe082\' stroke=\'%23a1887f\' stroke-width="2"/><rect x="300" y="65" width="35" height="25" fill=\'%23fffde7\' stroke=\'%23a1887f\' stroke-width="2"/><polygon points="300,65 317.5,50 335,65" fill=\'%23ffe082\' stroke=\'%23a1887f\' stroke-width="2"/><circle cx="350" cy="80" r="12" fill=\'%239ccc65\'/><rect x="170" y="70" width="30" height="20" fill=\'%23fffde7\' stroke=\'%23a1887f\' stroke-width="2"/><polygon points="170,70 185,55 200,70" fill=\'%23ffe082\' stroke=\'%23a1887f\' stroke-width="2"/></svg>') no-repeat center bottom;
+  background-size: cover;
+}
+
+.village-status-bar {
+  background: rgba(200,230,201,0.18);
+  border-radius: 8px;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+
+.villager-dialogue {
+  transition: opacity 0.2s;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.animate-villager {
+  animation: bounce 1.5s;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0);}
+  30%  { transform: translateY(-30px);}
+  50%  { transform: translateY(0);}
+  70%  { transform: translateY(-15px);}
+  100% { transform: translateY(0);}
+}
+
+@media (max-width: 800px) {
+  #game-container {
+    padding: 16px 4vw;
+    max-width: 98vw;
+  }
+  .modal-content {
+    padding: 18px 8vw;
+    min-width: unset;
+  }
+  #stats-bar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 12px;
+  }
+}
+
+img {
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#charity-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  height: auto;
+  padding: 16px 0;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
